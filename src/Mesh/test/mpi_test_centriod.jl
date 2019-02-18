@@ -1,6 +1,6 @@
 using Test
 using MPI
-using Canary
+using Mesh: centroidtocode, brickmesh
 
 function main()
   MPI.Init()

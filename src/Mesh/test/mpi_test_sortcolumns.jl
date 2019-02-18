@@ -1,6 +1,6 @@
 using Test
 using MPI
-using Canary
+using Mesh: parallelsortcolumns
 
 function main()
   MPI.Init()
@@ -9,7 +9,7 @@ function main()
 
   d = 4
   A = rand(1:10, d, 3rank)
-  B = Canary.parallelsortcolumns(comm, A, rev=true)
+  B = parallelsortcolumns(comm, A, rev=true)
 
   root = 0
   Acounts = MPI.Allgather(Cint(length(A)), comm)

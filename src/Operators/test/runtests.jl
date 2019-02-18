@@ -1,35 +1,39 @@
+using Test
+using Operators
+using Operators.GaussQuadrature
+
 @testset "GaussQuadrature" begin
   for T ∈ (Float32, Float64, BigFloat)
     let
-      x, w = Canary.GaussQuadrature.legendre(T, 1)
+      x, w = GaussQuadrature.legendre(T, 1)
       @test iszero(x)
       @test w ≈ [2one(T)]
     end
 
     let
-      endpt = Canary.GaussQuadrature.left
-      x, w = Canary.GaussQuadrature.legendre(T, 1, endpt)
+      endpt = GaussQuadrature.left
+      x, w = GaussQuadrature.legendre(T, 1, endpt)
       @test x ≈ [-one(T)]
       @test w ≈ [2one(T)]
     end
 
     let
-      endpt = Canary.GaussQuadrature.right
-      x, w = Canary.GaussQuadrature.legendre(T, 1, endpt)
+      endpt = GaussQuadrature.right
+      x, w = GaussQuadrature.legendre(T, 1, endpt)
       @test x ≈ [one(T)]
       @test w ≈ [2one(T)]
     end
 
     let
-      endpt = Canary.GaussQuadrature.left
-      x, w = Canary.GaussQuadrature.legendre(T, 2, endpt)
+      endpt = GaussQuadrature.left
+      x, w = GaussQuadrature.legendre(T, 2, endpt)
       @test x ≈ [-one(T); T(1//3)]
       @test w ≈ [T(1//2); T(3//2)]
     end
 
     let
-      endpt = Canary.GaussQuadrature.right
-      x, w = Canary.GaussQuadrature.legendre(T, 2, endpt)
+      endpt = GaussQuadrature.right
+      x, w = GaussQuadrature.legendre(T, 2, endpt)
       @test x ≈ [T(-1//3); one(T)]
       @test w ≈ [T(3//2); T(1//2)]
     end
@@ -37,21 +41,21 @@
 
   let
     err = ErrorException("Must have at least two points for both ends.")
-    endpt = Canary.GaussQuadrature.both
-    @test_throws err Canary.GaussQuadrature.legendre(1, endpt)
+    endpt = GaussQuadrature.both
+    @test_throws err GaussQuadrature.legendre(1, endpt)
   end
 
   let
     T = Float64
     n = 100
-    endpt = Canary.GaussQuadrature.both
+    endpt = GaussQuadrature.both
 
-    a, b = Canary.GaussQuadrature.legendre_coefs(T, n)
+    a, b = GaussQuadrature.legendre_coefs(T, n)
 
     err = ErrorException("No convergence after 1 iterations " *
                          "(try increasing maxits)")
 
-    @test_throws err Canary.GaussQuadrature.custom_gauss_rule(-one(T), one(T),
+    @test_throws err GaussQuadrature.custom_gauss_rule(-one(T), one(T),
                                                               a, b, endpt, 1)
   end
 end
@@ -69,10 +73,10 @@ end
 
   N = 6
   for test_type ∈ (Float32, Float64, BigFloat)
-    r, w = Canary.lglpoints(test_type, N)
-    D = Canary.spectralderivative(r)
+    r, w = lglpoints(test_type, N)
+    D = spectralderivative(r)
     x = LinRange{test_type}(-1, 1, 101)
-    I = Canary.interpolationmatrix(r, x)
+    I = interpolationmatrix(r, x)
 
     @test sum(P5(r).^2 .* w) ≈ IPN(test_type, 5)
     @test D * P6(r) ≈ DP6(r)
@@ -80,8 +84,8 @@ end
   end
 
   for test_type ∈ (Float32, Float64, BigFloat)
-    r, w = Canary.lgpoints(test_type, N)
-    D = Canary.spectralderivative(r)
+    r, w = lgpoints(test_type, N)
+    D = spectralderivative(r)
 
     @test sum(P5(r).^2 .* w) ≈ IPN(test_type, 5)
     @test sum(P6(r).^2 .* w) ≈ IPN(test_type, 6)

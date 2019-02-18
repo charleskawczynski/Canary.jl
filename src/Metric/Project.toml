@@ -1,0 +1,8 @@
+name = "Metric"
+uuid = "bcbcc2b0-33c2-11e9-2139-51212f77c5d5"
+authors = ["Charles_Kawczynski <kawczynski.charles@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Operators = "c0c68b22-33c2-11e9-2e66-c9e652c0e259"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

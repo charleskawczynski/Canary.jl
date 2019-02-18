@@ -1,3 +1,8 @@
+module Metric
+
+export computemetric, computemetric!, creategrid, creategrid!
+export creategrid1d, creategrid2d, creategrid3d
+
 """
     creategrid!(x, elemtocoord, r)
 
@@ -603,4 +608,6 @@ function computemetric(x::AbstractArray{T, 4},
 
   (J=J, ξx=ξx, ηx=ηx, ζx=ζx, ξy=ξy, ηy=ηy, ζy=ζy, ξz=ξz, ηz=ηz, ζz=ζz, sJ=sJ,
    nx=nx, ny=ny, nz=nz)
+end
+
 end

@@ -1,3 +1,15 @@
+module Mesh
+
+export linearpartition,
+       hilbertcode,
+       vertsortandorder,
+       brickmesh,
+       centroidtocode,
+       partition,
+       connectmesh,
+       getpartition,
+       mappings
+
 using MPI
 
 """
@@ -975,4 +987,6 @@ function mappings(N, elemtoelem, elemtoface, elemtoordr)
   end
 
   (vmapM, vmapP)
+end
+
 end

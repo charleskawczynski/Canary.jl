@@ -1,4 +1,12 @@
-include("GaussQuadrature/quadrature.jl")
+module Operators
+
+export lglpoints
+export lgpoints
+export baryweights
+export spectralderivative
+export interpolationmatrix
+
+include("GaussQuadrature.jl")
 
 """
     lglpoints(::Type{T}, N::Integer) where T <: AbstractFloat
@@ -114,4 +122,6 @@ function interpolationmatrix(rsrc::AbstractVector{T}, rdst::AbstractVector{T},
     I[k, :] = I[k, :] / d;
   end
   I
+end
+
 end

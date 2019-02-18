@@ -1,0 +1,10 @@
+name = "Canary"
+uuid = "d4c39da0-33ce-11e9-0ca5-131f44161c88"
+authors = ["Charles_Kawczynski <kawczynski.charles@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Mesh = "bf057a30-33c2-11e9-0d00-ff97d981a04a"
+Metric = "bcbcc2b0-33c2-11e9-2139-51212f77c5d5"
+Operators = "c0c68b22-33c2-11e9-2e66-c9e652c0e259"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

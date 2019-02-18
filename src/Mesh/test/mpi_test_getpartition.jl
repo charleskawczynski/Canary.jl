@@ -1,6 +1,6 @@
 using Test
 using MPI
-using Canary
+using Mesh: linearpartition, getpartition
 using Random
 
 function main()
@@ -16,12 +16,12 @@ function main()
   @assert csize > 1
 
   bs = [(i==1) ? (1:0) :
-        Canary.linearpartition(Nelemtotal, i-1, csize-1) for i=1:csize]
-  as = [Canary.linearpartition(Nelemtotal, i, csize) for i=1:csize]
+        linearpartition(Nelemtotal, i-1, csize-1) for i=1:csize]
+  as = [linearpartition(Nelemtotal, i, csize) for i=1:csize]
 
   codeb = globalcode[bs[crank+1]]
 
-  (so, ss, rs) = Canary.getpartition(comm, codeb)
+  (so, ss, rs) = getpartition(comm, codeb)
 
   codeb = codeb[so]
   codec = []

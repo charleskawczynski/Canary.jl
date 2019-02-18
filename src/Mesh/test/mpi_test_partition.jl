@@ -1,6 +1,6 @@
 using Test
 using MPI
-using Canary
+using Mesh
 
 function main()
   MPI.Init()
