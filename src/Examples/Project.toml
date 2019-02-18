@@ -1,6 +1,14 @@
-authors = ["Charles_Kawczynski <kawczynski.charles@gmail.com>"]
 name = "Examples"
 uuid = "a8ba1f00-33c3-11e9-2bdd-adbcaee9efc6"
+authors = ["Charles_Kawczynski <kawczynski.charles@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+Canary = "d4c39da0-33ce-11e9-0ca5-131f44161c88"
+MPI = "da04e1cc-30fd-572f-bb4f-1f8673147195"
+Mesh = "bf057a30-33c2-11e9-0d00-ff97d981a04a"
+Metric = "bcbcc2b0-33c2-11e9-2139-51212f77c5d5"
+Operators = "c0c68b22-33c2-11e9-2e66-c9e652c0e259"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+WriteVTK = "64499a7a-5c06-52f2-abe2-ccb03c286192"
