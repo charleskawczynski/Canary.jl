@@ -71,6 +71,7 @@
 include(joinpath(@__DIR__,"vtk.jl"))
 using MPI
 using Canary
+using Parameters.RKCoefficients
 using Printf: @sprintf
 const HAVE_CUDA = try
     using CUDAnative
