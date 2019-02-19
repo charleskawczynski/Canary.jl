@@ -1,0 +1,6 @@
+authors = ["Charles_Kawczynski <kawczynski.charles@gmail.com>"]
+name = "Parameters"
+uuid = "c8c336a0-33d8-11e9-2cc0-33b87b6ae4cb"
+version = "0.1.0"
+
+[deps]
